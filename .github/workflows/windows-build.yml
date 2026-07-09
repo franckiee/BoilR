@@ -23,30 +23,3 @@ jobs:
         with:
           name: boilr-windows
           path: target/release/boilr.exe
-EO
-cat > .github/workflows/windows-build.yml <<'EOF'
-name: Build Windows EXE
- 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - pr466
- 
-jobs:
-  build:
-    runs-on: windows-latest
- 
-    steps:
-      - uses: actions/checkout@v4
- 
-      - uses: dtolnay/rust-toolchain@stable
- 
-      - name: Build
-        run: cargo build --release
- 
-      - name: Upload EXE
-        uses: actions/upload-artifact@v4
-        with:
-          name: boilr-windows
-          path: target/release/boilr.exe
